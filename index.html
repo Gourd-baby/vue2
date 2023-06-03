@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="nums">
+        <button v-on:click="nums++">关注</button>
+        <button v-on:click="cancel">取消</button>
+        <h1>{{name}},非常帅,已经有{{nums}}人点赞</h1>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                name:"张三",
+                nums:10
+            },
+            methods: {
+                cancel() {
+                    this.nums --;
+                },
+            },
+        });
+        
+    </script>
+</body>
+</html>
