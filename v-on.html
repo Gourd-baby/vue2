@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--点击事件-->
+        点赞数:<span v-text="nums"></span>
+        <button @click="nums++">点赞</button>
+        <button v-on:click="cancel">取消</button><br/><br/>
+
+        <!--Vue.js为`v-on`提供了事件修饰符-->
+        大div:
+        <div style="border: 5px solid red;padding:  20px;" @click="hello">
+            小div:
+            <!--@click.stop阻止事件冒泡到父元素（）-->
+            <!--<div style="border: 1px solid blue;padding: 20px;" @click.stop="hello"> -->
+            <div style="border: 1px solid blue;padding: 20px;" @click.stop="hello"> 
+                <!--阻止默认事件发生，就是点击“百度”不会 跳转，加个@click.prevent
+                就不会跳转，后面继续追加.stop则是阻止事件冒泡到父元素-->>
+            <a href="http://www.baidu.com" @click.prevent.stop>去百度</a>
+            </div>
+        </div>
+        
+        <!--按键修饰符,就是你通过键盘的上建和下键或者其他的按键，实现效果-->
+        <input type="text" v-model="nums" v-on:keyup.up="nums+=2" @keyup.down="nums-=2" @click.ctrl="nums=10">
+
+    </div>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                nums:1
+            },
+            methods:{
+                cancel(){
+                    this.nums--;
+                },
+                hello(){
+                    alert("被点击了")
+                }
+            }
+
+        });
+    </script>
+</body>
+</html>
