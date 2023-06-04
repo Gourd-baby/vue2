@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul >
+        <!--遍历数组-->
+        <!-- <li v-for="user in users">
+            {{user.name}}->{{user.gender}}->{{user.age}}
+        </li> -->
+
+
+        <!--数组角标-->
+        <!-- <li v-for="(user,index) in users">
+            {{index+1}}.{{user.name}}==>{{user.gender}}==>{{user.age}}
+        </li> -->
+
+
+         <!--v-for遍历对象-->
+         <li v-for="(user,index) in users" :key="user.name">
+
+            <span v-for="(value,key,index) in user">
+                {{index+1}}--{{key}}--{{value}}
+            </span>
+            
+         </li>
+         <!-- <li v-for="(key,value) in users">
+           {{key}}--{{value}}
+         </li> -->
+    </ul>
+    </div>
+   
+
+    <script>
+        let app = new Vue({
+                    el: "#app",
+                    data: {
+                    users: [
+                    { name: '柳岩', gender: '女', age: 21 },
+                    { name: '张三', gender: '男', age: 18 },
+                    { name: '范冰冰', gender: '女', age: 24 },
+                    { name: '刘亦菲', gender: '女', age: 18 },
+                    { name: '古力娜扎', gender: '女', age: 25 }
+                    ]
+                    },
+                })
+    </script>
+</body>
+</html>
