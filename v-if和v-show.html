@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <button v-on:click="show=!show">点我呀</button>
+       <span v-if="show">v-if=true标签</span>
+       <span v-show="show">v-show=true标签</span><br/><br/>
+
+       <button @click="random=Math.random()">点击生成随机数</button>
+       <h1 v-if="random>=0.75">看到我啦，&gt;=0.75</h1>
+       <h1 v-else-if="random>=0.5">看到我啦，&gt;=0.5</h1>
+       <h1 v-else-if="random<0.5">看到我啦，&lt;0.5</h1>
+    </div>
+   
+
+    <script>
+        let app = new Vue({
+            el:"#app",
+            data:{
+                show:true,
+                random:1
+            }
+        })
+    </script>
+</body>
+</html>
